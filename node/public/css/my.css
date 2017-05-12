@@ -1,0 +1,6 @@
+
+.a, .b{ position:absolute;margin:0}
+.a{ z-index:2}
+.b{ z-index:1}
+   .mask{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:1000; }
+    .opacity{ opacity:0.3; filter: alpha(opacity=10); background-color:#000; }
