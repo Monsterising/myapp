@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<!-- saved from url=(0120)http://localhost:64473/%E6%B2%B3%E9%95%BF%E5%88%B6/index.html?_ijt=vnfvc0m43b6ojd7p6rci8e9iul#/app/Control_Template_Page -->
+<html lang="en" data-ng-app="app" class="ng-scope">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }</style>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./files/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="./files/animate.css" type="text/css">
+    <link href="./files/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./files/simple-line-icons.css" type="text/css">
+    <link rel="stylesheet" href="./files/font.css" type="text/css">
+    <link rel="stylesheet" href="./files/app.css" type="text/css">
+    <link rel="stylesheet" href="./files/DC_Main.css" type="text/css">
+    <link href="./files/DC_Style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./files/DC_NewStyle.css" type="text/css">
+    <link rel="stylesheet" href="./files/hz-app.css">
+    <!--Fixed Columns样式引入-->
+    <link href="./files/bootstrap-table.css" rel="stylesheet">
+    <link href="./files/bootstrap-table-fixed-columns.css" rel="stylesheet">
+    <link href="./files/docs.min.css" rel="stylesheet">
+    <!--Ztree样式引入-->
+    <link href="./files/metroStyle.css" rel="stylesheet">
+    <!--日期选择器-->
+    <link href="./files/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!--upload插件-->
+    <link href="./files/fileinput.min.css" rel="stylesheet">
+    <link href="./files/theme.css" rel="stylesheet">
+    <!--下拉框-->
+    <link rel="stylesheet" href="./files/select2.css">
+    <link rel="stylesheet" href="./files/select2-bootstrap.css">
+    <!--地图图标-->
+    <link rel="stylesheet" href="./files/mapicons.css">
+    <!--登陆页样式-->
+    <link rel="stylesheet" href="./files/style.css">
+
+
+</head>
+<body>
+<!-- uiView:  -->
+<div ui-view=""><!-- navbar -->
+
+    <!-- / menu -->
+    <!-- content -->
+    <div class="app-content">
+        <div ui-butterbar="" class="butterbar hide"><span class="bar"></span></div>
+        <a href="http://localhost:64473/%E6%B2%B3%E9%95%BF%E5%88%B6/index.html?_ijt=vnfvc0m43b6ojd7p6rci8e9iul"
+           class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside"></a>
+        <!-- uiView:  -->
+        <div class="app-content-body fade-in-up ng-scope" ui-view="">
+            <div class="dc_body modal-body wrapper-lg" ng-controller="ControlTemplatePageCtrl" data-ng-init="load()">
+                <!--标题栏-->
+                <div class="dc_top_title row_top_10">
+                    <h4 class="m-t-xs">1、标题栏</h4>
+                    <span class="text text-success">*页面标题由“图标”+“一级导航”+“>”+“二级图标”组成</span>
+                    <div class="col-md-12">
+                        <h4 class="dc_font_max">
+                            <a><i class="fa fa-bar-chart m-r-xs"></i>项目管理</a>
+                        </h4>
+                        <h4 class="dc_font_min">
+                            <a><i class="fa fa-fw fa-angle-right m-r-xs"></i>项目信息查询</a>
+                        </h4>
+                    </div>
+                </div>
+                <!--标题栏 End!-->
+                <!--检索区域-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">2、select选择器/输入框/富文本编辑器/checkbox&radio</h4>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*使用时在router中配置加载ui.select模块，且select默认选中一项</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <!--<ui-select ng-model="exampleLists.selected" theme="bootstrap" style="width:200px">-->
+                        <!--<ui-select-match>{{$select.selected.name}}</ui-select-match>-->
+                        <!--<ui-select-choices repeat="item in exampleLists | filter: $select.search"-->
+                        <!--ng-click="getItem($select.selected)">-->
+                        <!--<div class="dc_select" ng-bind-html="item.name | highlight: $select.search"></div>-->
+                        <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="col-md-4 without_left_padding">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon ">单选</span>
+                                <select select2 ng-model="Listcode" class="form-control" placeholder="请选择">
+                                    <option value="{{ item.id }}" ng-repeat="item in exampleLists">{{ item.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 without_left_padding">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon">多选</span>
+                                <input select2="" select2-model="Listcodes"
+                                       config="mulLists" multiple="" placeholder="请选择"
+                                       class="form-control ng-isolate-scope ng-valid select2-offscreen ng-dirty"
+                                       type="text" tabindex="-1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*省市县三级联动下拉框事例</span>
+                    </div>
+                    <div class="col-md-12 row_top_10 without_left_padding">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">行政区划Code</span>
+                                <input class="form-control searchInput input-sm" type="text" ng-model="CCTCode"
+                                       id="prokey">
+                                <span class="input-quit" ng-click="CCTCode=null" ng-show="CCTCode!=null"> <i
+                                        class="fa fa-times fa-1"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <button class="btn m-b-xs btn-sm btn-success btn-addon dc_mr" ng-click="bindCCT()"><i
+                                    class="fa fa-save"></i>根据最小行政编码进行绑定数据
+                            </button>
+                            <button class="btn m-b-xs btn-sm btn-warning btn-addon dc_mr" ng-click="getCCT()"><i
+                                    class="fa fa-pencil-square-o"></i>获取最小行政编码
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 row_top_10 searchnav">
+                        <div class="input-group pull-left   ">
+                            <div class="input-group pull-left ">
+                                <div class="input-group-addon ">行政区划</div>
+                                <div class="col-sm-4 without_padding hz_span">
+                                    <select select2 ng-model="City.selected" class="form-control pull-left "
+                                            placeholder="请选择">
+                                        <option value="{{ item.Admin_Div_Code }}" ng-repeat="item in City">{{
+                                            item.Admin_Div_Name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 without_padding hz_span">
+                                    <select select2 ng-model="county.selected" class="form-control pull-left "
+                                            placeholder="请选择">
+                                        <option value="{{ item.Admin_Div_Code }}" ng-repeat="item in county">{{
+                                            item.Admin_Div_Name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 without_padding hz_span">
+                                    <select select2 ng-model="town.selected" class="form-control pull-left "
+                                            placeholder="请选择">
+                                        <option value="{{ item.Admin_Div_Code }}" ng-repeat="item in town">{{
+                                            item.Admin_Div_Name }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="btn m-b-xs btn-sm btn-warning btn-addon dc_mr m-l-md" ng-click="clearCCT()"><i
+                                class="fa fa-pencil-square-o"></i>清空行政区划下拉框
+                        </button>
+                    </div>
+
+
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*当输入框有值时显示“×”，点击清空</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="input-group" style="width:250px;">
+                            <span class="input-group-addon">关键字</span>
+                            <input class="form-control searchInput input-sm" type="text" ng-model="like_info"
+                                   id="prokey">
+                            <span class="input-quit" ng-click="like_info=null" ng-show="like_info!=null"> <i
+                                    class="fa fa-times fa-1"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*时间选择器配合js生成</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="input-group date dc_FromDate" id="SDate" data-date-format="yyyy-mm-dd"
+                             style="width:300px;">
+                            <span class="input-group-addon">开标时间</span>
+                            <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                   ng-model="startyear">
+                            <div class="input-group-addon no-border-left">
+                                <span class="add-on" ng-click="startyear=null"><i class="fa fa-remove"></i></span>
+                            </div>
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*双时间选择器示例,最外层容器指定宽度或百分比宽度+最小宽度</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="dc_time_pd" style="width: 600px">
+                            <div class="input-group date apart" id="ADate" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon">开始时间</span>
+                                <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                       ng-model="ayear">
+                                <div class="input-group-addon no-border-left">
+                                    <span class="add-on" ng-click="ayear=null"><i class="fa fa-remove"></i></span>
+                                </div>
+                                <div class="input-group-addon last">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                            <div class="input-group date bpart" id="BDate" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon first">结束时间</span>
+                                <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                       ng-model="byear">
+                                <div class="input-group-addon no-border-left">
+                                    <span class="add-on" ng-click="byear=null"><i class="fa fa-remove"></i></span>
+                                </div>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*富文本编辑器</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="input-group">
+                            <span class="input-group-addon">文本描述</span>
+                            <textarea rows="3" placeholder="请输入..." class="form-control hz-textarea"
+                                      ng-model="introduce"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*检索行组合使用</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="dc_time_pd" style="width: 500px">
+                            <div class="input-group date apart" id="CDate" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon">开始时间</span>
+                                <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                       ng-model="cyear">
+                                <div class="input-group-addon no-border-left">
+                                    <span class="add-on" ng-click="cyear=null"><i class="fa fa-remove"></i></span>
+                                </div>
+                                <div class="input-group-addon last">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                            <div class="input-group date bpart" id="DDate" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon first">结束时间</span>
+                                <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                       ng-model="dyear">
+                                <div class="input-group-addon no-border-left">
+                                    <span class="add-on" ng-click="dyear=null"><i class="fa fa-remove"></i></span>
+                                </div>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dc-select-group margin-left-10">
+                            <div class="dc_concat">招标类型</div>
+                            <div class="dc_self" style="width:210px;">
+                                <ui-select ng-model="exampleLists.selected" theme="bootstrap">
+                                    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item in exampleLists">
+                                        <div class="dc_select" ng-bind-html="item.name"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="input-group margin-left-10 pull-left" style="width:200px;">
+                            <span class="input-group-addon">关键字</span>
+                            <input class="form-control searchInput input-sm" type="text" ng-model="like_info"
+                                   id="prokey">
+                            <span class="input-quit" ng-click="like_info=null" ng-show="like_info!=null"> <i
+                                    class="fa fa-times fa-1"></i></span>
+                        </div>
+                        <button class="btn m-b-xs btn-sm btn-warning btn-addon pull-left margin-left-10"><i
+                                class="fa fa-search"></i>搜索
+                        </button>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*radio&checkbox</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="input-group pull-left">
+                            <label class="radio i-checks m-l-md m-b-md">
+                                <input type="checkbox" class="ng-pristine ng-untouched ng-valid"><i></i>
+                                选项一
+                            </label>
+                        </div>
+                        <div class="input-group pull-left">
+                            <label class="radio i-checks m-l-md m-b-md">
+                                <input type="checkbox" class="ng-pristine ng-untouched ng-valid"><i></i>
+                                选项二
+                            </label>
+                        </div>
+                        <div class="input-group pull-left">
+                            <label class="radio i-checks m-l-md m-b-md">
+                                <input type="radio" class="ng-pristine ng-untouched ng-valid" name="optionsRadios"
+                                       id="optionsRadios1" value="option1" ng-click="Onroad()"><i></i>
+                                进行中
+                            </label>
+                        </div>
+                        <div class="input-group pull-left">
+                            <label class="radio i-checks m-l-md m-b-md">
+                                <input type="radio" class="ng-pristine ng-untouched ng-valid" name="optionsRadios"
+                                       id="optionsRadios2" value="option2" ng-click="Onquit()"><i></i>
+                                已中标
+                            </label>
+                        </div>
+                        <div class="input-group pull-left">
+                            <label class="radio i-checks m-l-md m-b-md">
+                                <input type="radio" class="ng-pristine ng-untouched ng-valid" name="optionsRadios"
+                                       id="optionsRadios3" value="option3" checked ng-click="All()"><i></i>
+                                全部
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <span class="text text-success">*组合使用</span>
+                    </div>
+                    <div class="col-md-12 row_top_10">
+                        <div class="dc_time_pd" style="width: 500px">
+                            <div class="input-group date apart" id="CDate" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon">开始时间</span>
+                                <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                       ng-model="cyear">
+                                <div class="input-group-addon no-border-left">
+                                    <span class="add-on" ng-click="cyear=null"><i class="fa fa-remove"></i></span>
+                                </div>
+                                <div class="input-group-addon last">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                            <div class="input-group date bpart" id="DDate" data-date-format="yyyy-mm-dd">
+                                <span class="input-group-addon first">结束时间</span>
+                                <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                       ng-model="dyear">
+                                <div class="input-group-addon no-border-left">
+                                    <span class="add-on" ng-click="dyear=null"><i class="fa fa-remove"></i></span>
+                                </div>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group margin-left-10 pull-left" style="width:200px;">
+                            <span class="input-group-addon">关键字</span>
+                            <input class="form-control searchInput input-sm" type="text" ng-model="like_info"
+                                   id="prokey">
+                            <span class="input-quit" ng-click="like_info=null" ng-show="like_info!=null"> <i
+                                    class="fa fa-times fa-1"></i></span>
+                        </div>
+                        <button class="btn m-b-xs btn-sm btn-warning btn-addon pull-left margin-left-10"><i
+                                class="fa fa-search"></i>搜索
+                        </button>
+                        <div class="radioRemix">
+                            <div class="input-group pull-left">
+                                <label class="radio i-checks m-l-md">
+                                    <input type="radio" class="ng-pristine ng-untouched ng-valid" name="optionsRadios"
+                                           id="optionsRadios1" value="option1" ng-click="Onroad()"><i></i>
+                                    进行中
+                                </label>
+                            </div>
+                            <div class="input-group pull-left">
+                                <label class="radio i-checks m-l-md">
+                                    <input type="radio" class="ng-pristine ng-untouched ng-valid" name="optionsRadios"
+                                           id="optionsRadios2" value="option2" ng-click="Onquit()"><i></i>
+                                    已中标
+                                </label>
+                            </div>
+                        </div>
+                        <div class="radioRemix">
+                            <div class="input-group pull-left">
+                                <label class="radio i-checks m-l-md">
+                                    <input type="checkbox" class="ng-pristine ng-untouched ng-valid"><i></i>
+                                    进行中
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--检索区域 End!-->
+                <!--按钮-->
+                <div class="row row_top_20">
+                    <div class="col-md-12">
+                        <div class="dc_top_title">
+                            <h4 class="m-t-xs">3、按钮</h4>
+                            <span class="text text-success">*按钮主要使用规范为：保存-绿色，编辑及查询-黄色，删除-红色</span>
+                            <div class="row row_top_10">
+                                <div class="col-md-12">
+                                    <div>
+                                        <a ui-sref="app.ProjectViewInfo">
+                                            <button class="btn m-b-xs btn-sm btn-success btn-addon dc_mr"
+                                                    ng-click="ShiftView()"><i
+                                                    class="fa fa-plus"></i>增加
+                                            </button>
+                                        </a>
+                                        <button class="btn m-b-xs btn-sm btn-success btn-addon dc_mr"><i
+                                                class="fa fa-save"></i>保存
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-warning btn-addon dc_mr"><i
+                                                class="fa fa-pencil-square-o"></i>编辑
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-danger btn-addon dc_mr"><i
+                                                class="glyphicon glyphicon-trash"></i>删除
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon dc_mr"><i
+                                                class="fa fa-share-square-o"></i>导出
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-primary btn-addon dc_mr"><i
+                                                class="fa fa-angle-left"></i>返回
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-default btn-addon dc_mr"><i
+                                                class="fa fa-times-circle-o"></i>取消
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-info btn-addon dc_mr"><i
+                                                class="glyphicon glyphicon-cloud-download"></i>暂存
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-warning btn-addon dc_mr"><i
+                                                class="fa fa-search"></i>搜索
+                                        </button>
+                                        <button class="btn m-b-xs btn-sm btn-custom btn-addon dc_mr"><i
+                                                class="fa fa-check"></i>确定
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--按钮 End!-->
+                <!--同页面多标题-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <div class="dc_top_title">
+                            <h4 class="m-t-xs">4、同页面多标题</h4>
+                            <span class="text text-success">*页面副导航为</span>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="dc_top_title">
+                                        <h4 class="dc_font_max">
+                                            <a><i class="fa fa-bar-chart text-muted m-r-xs"></i>项目管理</a>
+                                        </h4>
+                                        <h4 class="dc_font_min">
+                                            <a><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>项目信息查询</a>
+                                        </h4>
+                                    </div>
+                                    <span class="text text-success">*页面不同模块之间标题使用如下样式：</span>
+                                    <div class="dc_title">
+                                        <div class="dc_line"></div>
+                                        <span class="dc_list">基础信息维护</span>
+                                        <div class="dc_list_line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--同页面多标题 End!-->
+                <!--模态框-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <div class="dc_top_title">
+                            <h4 class="m-t-xs">5、模态框</h4>
+                            <span class="text text-success">*模态框主要用于表单的查看--编辑;模态框的表单组合展示</span>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#dcModal">点击
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--模态框 End!-->
+                <!--Tab分页-->
+                <div class="row row_top_10" style="min-height: 300px">
+                    <div class="col-md-12">
+                        <div class="dc_top_title">
+                            <h4 class="m-t-xs">6、Tab分页及bootstrap table示例</h4>
+                            <span class="text text-success">*表格formatter生成的a及label详见下面表格内容</span>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="wrap">
+                                        <ul class="blist clearfix">
+                                            <li class="{{list.listClass}}" ng-repeat="list in lists"
+                                                ng-click="chooseLi(list.id)">
+                                                {{list.name}}
+                                            </li>
+                                        </ul>
+                                        <div class="listContent">
+                                            <table bs-table-control="bsTableControl"
+                                                   class="table table-hovered table-no-bordered"
+                                                   id="tabTable"></table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tab分页 End!-->
+                <!--对话框提醒-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <div class="dc_top_title">
+                            <h4 class="m-t-xs">7、对话提醒框</h4>
+                            <div class="col-md-12">
+                                <span class="text text-success">*主要用于用户操作前的确认提醒，请求失败的404提醒</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel-body b-a">
+                                        <div class="col-md-2">
+                                            <button class="btn btn-success" data-toggle="modal"
+                                                    data-target="#dcComfirmModal">确认
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-info" data-toggle="modal" data-target="#dcTipModal">
+                                                提示
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#dcErrorModal">错误
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--对话框提醒 End!-->
+                <!--横幅提醒-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">8、横幅提醒</h4>
+                        <span class="text text-success">*展示型表格无信息或区域无信息的提醒|操作成功的提醒|操作失败的提醒|相关的警告信息等</span>
+                    </div>
+                </div>
+                <div class="dc_top_title">
+                    <div class="row row_top_10">
+                        <div class="col-md-12">
+                            <div class="dc_banner_warning dc_info">
+                                <i class="fa fa-exclamation-circle fa-lg  dc_icon_mr"></i> 暂无相关信息，请点击"录入"按钮新增
+                            </div>
+                            <div class="block_10"></div>
+                            <div class="dc_banner_warning dc_success">
+                                <i class="fa fa-check-circle fa-lg dc_icon_mr"></i> 成功提示!
+                            </div>
+                            <div class="block_10"></div>
+                            <div class="dc_banner_warning dc_fail">
+                                <i class="fa fa-times-circle fa-lg  dc_icon_mr"></i> 上传失败!
+                            </div>
+                            <div class="block_10"></div>
+                            <div class="dc_banner_warning dc_warning">
+                                <i class="fa fa-warning fa-lg  dc_icon_mr"></i> 警告信息!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--横幅提醒 End!-->
+                <!--普通展示型表格-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">9、普通展示型表格</h4>
+                        <span class="text text-success">*展示型表格用ng-repeat形式生成，金额字体颜色用绿色，文件类型用蓝色</span>
+                    </div>
+                </div>
+                <div class="dc_top_title">
+                    <div class="row row_top_10">
+                        <div class="col-md-12">
+                            <div class="dc_showTable_content">
+                                <table class="bootstrap-table table table-bordered dc_showTable">
+                                    <tbody>
+                                    <tr>
+                                        <td class="dc_showTable_title">表头</td>
+                                        <td>表格内容</td>
+                                        <td class="dc_showTable_title">表头</td>
+                                        <td>表格内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="dc_showTable_title">金额</td>
+                                        <td class="text-success">88888</td>
+                                        <td class="dc_showTable_title">文件</td>
+                                        <td><a class="text-info">合同.zip</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--时间进度条插件-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">10、时间进度条</h4>
+                    </div>
+                </div>
+                <div class="row row_top_10 padding-bottom-50">
+                    <div class="col-md-12">
+                        <div class="dc_timeline_content hz-timeline" ng-show="lineShow">
+                            <div class="dc_timeRoll" ng-class="item.class" ng-repeat="item in items">
+                                <span class="dc_circle" ng-click="move(item,$event)"></span>
+                                <span class="dc_timeline {{item.lineClass}}"></span>
+                                <h5 class="dc_time_title" ng-click="titleMove(item,$event)">{{item.title}}</h5>
+                            </div>
+                        </div>
+                        <div class="dc_chooseTime" ng-show="!lineShow">
+                            <div class="input-group date input-group-sm" id="FromDate" data-date-format="yyyy-mm-dd">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="lineShow=true">返回</button>
+                                </div>
+                                <span class="input-group-addon">年份</span>
+                                <input type="text" class="form-control" size="13" placeholder="" ng-model="timeyear">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-custom" ng-click="sure()">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--树形控件-->
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">11、树形控件</h4>
+                    </div>
+                </div>
+                <div class="row row_top_10">
+                    <div class="col-md-4">
+                        <span class="text text-success">*点击树上的文字可以选中和取消选中,setting中的check添加chkStyle: "radio"属性可以设置树单选</span>
+                        <div class="dc_zTree_content">
+                            <a class="fa fa-times-circle dc_clean_input" ng-click="clean_search()"></a>
+                            <input ng-model="treeSearch" class="form-control empty dc_tree_search" type="text" id="key"
+                                   value=""
+                                   placeholder="输入姓名查询"/>
+                            <!--图标清空输入-->
+                            <div class="dc_zTree_box row_top_10">
+                                <ul id="treeDemo" class="ztree"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text text-success">*部门选择在tree外层容器上加“depart”的class</span>
+                        <div class="space-10"></div>
+                        <div class="dc_zTree_content depart">
+                            <a class="fa fa-times-circle dc_clean_input" ng-click="clean_search1()"></a>
+                            <input ng-model="treeSearch1" class="form-control empty dc_tree_search" type="text"
+                                   id="key1" value=""
+                                   placeholder="输入部门查询"/>
+                            <!--图标清空输入-->
+                            <div class="dc_zTree_box row_top_10">
+                                <ul id="treeDemo1" class="ztree"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">12、加载动画</h4>
+                        <span class="text text-success">*加载动画用于和服务器请求时绑定数据的容器显示动画，请求发起之前执行动画显示，请求成功时建议设置setTimeout来延迟执行动画消失，更加友好</span>
+                        <br>
+                        <span class="text text-success">*动画绑定的外层容器需加上position:relative的CSS属性，动画默认上下居中，分大、中、小三个尺寸</span>
+                    </div>
+                </div>
+                <div class="row row_top_10">
+                    <div class="col-md-4">
+                        <div class="container" style="height: 160px;width: 100%;position: relative">
+                            <div class="loading-content loading-lg" style="display: block">
+                                <span class="loading-img"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="container" style="height: 160px;width: 100%;position: relative">
+                            <div class="loading-content loading-middle" style="display: block">
+                                <span class="loading-img"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="container" style="height: 160px;width: 100%;position: relative">
+                            <div class="loading-content loading-small" style="display: block">
+                                <span class="loading-img"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <h4 class="m-t-xs">13、地图类字体图标</h4>
+                        <span class="text text-success">*普通ICON建议使用fontawasome，地图类使用专用字体图标</span>
+                    </div>
+                </div>
+                <div class="row row_top_10">
+                    <div class="col-md-12">
+                        <span class="text text-danger">*地图标记类使用气泡icon,字体图标默认无颜色，根据对照表对图标颜色赋值</span>
+                    </div>
+                    <div class="col-md-12" style="font-size: 36px">
+                        <i class="icon-sk-balloon" style="color:#e72029"></i>
+                        <i class="icon-tsdb-balloon" style="color:#215caa"></i>
+                        <i class="icon-db-balloon" style="color:#2e6eae"></i>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="text text-danger">*操作面板使用线型icon</span>
+                    </div>
+                    <div class="col-md-12" style="font-size: 24px">
+                        <i class="icon-sk-line" style="color:#e72029"></i>
+                        <i class="icon-tsdb-line" style="color:#215caa"></i>
+                        <i class="icon-db-line" style="color:#2e6eae"></i>
+                    </div>
+                </div>
+            </div>
+            <!--模态框-->
+            <div class="modal fade dc_modal" id="dcModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header dc_modal_header">
+                            <div class="dc_modal_line"></div>
+                            <div class="dc_title">
+                                <button type="button" class="close dc_btn_in" data-dismiss="modal" aria-label="Close">
+                                    <span class="dc_cansel slide-right" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">模态框</h4>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form name="modalForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon sw-middle">选项一</span>
+                                            <input class="form-control searchInput input-sm" type="text"
+                                                   ng-model="like_info"
+                                                   required/>
+                                            <span class="input-quit" ng-click="like_info=null"
+                                                  ng-show="like_info!=null"> <i
+                                                    class="fa fa-times fa-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="dc-select-group">
+                                            <div class="dc_concat sw-middle">招标类型</div>
+                                            <div class="dc_self" style="width:185px;">
+                                                <ui-select ng-model="exampleLists.selected" theme="bootstrap">
+                                                    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="item in exampleLists">
+                                                        <div class="dc_select" ng-bind-html="item.name"></div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group date dc_FromDate" id="SDate"
+                                             data-date-format="yyyy-mm-dd"
+                                             style="width: 100%">
+                                            <span class="input-group-addon sw-middle">开标时间</span>
+                                            <input type="text" class="form-control input-sm" size="13" placeholder=""
+                                                   ng-model="startyear" required>
+                                            <div class="input-group-addon no-border-left">
+                                                <span class="add-on" ng-click="startyear=null"><i
+                                                        class="fa fa-remove"></i></span>
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon sw-middle">文本描述</span>
+                                            <textarea rows="3" placeholder="请输入..." class="form-control hz-textarea"
+                                                      ng-model="introduce" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-custom"
+                                    ng-disabled="modalForm.$invalid||exampleLists.selected==null">确定
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!--模态框-->
+            <div class="modal fade dc_modal" id="dcComfirmModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header dc_dialog_header">
+                            <div class="dc_title">
+                                <button type="button" class="close dc_btn_in" data-dismiss="modal" aria-label="Close">
+                                    <span class="dc_dialog_cansel slide-right" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title dc_dialog_title">确认</h4>
+                            </div>
+                        </div>
+                        <div class="modal-body dc_dialog_body">
+                            <span><i class="fa fa-question-circle dc-dialog-fa dc-question-color"
+                                     aria-hidden="true"></i></span>
+                            <span class="font-bold">是否删除该记录？</span>
+                        </div>
+                        <div class="modal-footer dc_dialog_footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-custom">确定</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!--模态框-->
+            <div class="modal fade dc_modal" id="dcTipModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header dc_dialog_header">
+                            <div class="dc_title">
+                                <button type="button" class="close dc_btn_in" data-dismiss="modal" aria-label="Close">
+                                    <span class="dc_dialog_cansel slide-right" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title dc_dialog_title">提示</h4>
+                            </div>
+                        </div>
+                        <div class="modal-body dc_dialog_body">
+                <span><i class="fa fa-exclamation-circle dc-dialog-fa dc-exclamation-color"
+                         aria-hidden="true"></i></span>
+                            <span class="font-bold">请先选择人员再操作！</span>
+
+                        </div>
+                        <div class="modal-footer dc_dialog_footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!--模态框-->
+            <div class="modal fade dc_modal" id="dcErrorModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header dc_dialog_header">
+                            <div class="dc_title">
+                                <button type="button" class="close dc_btn_in" data-dismiss="modal" aria-label="Close">
+                                    <span class="dc_dialog_cansel slide-right" aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title dc_dialog_title">错误</h4>
+                            </div>
+                        </div>
+                        <div class="modal-body dc_dialog_body">
+                            <span><i class="fa fa-bug dc-dialog-fa dc-bug-color" aria-hidden="true"></i></span>
+                            <span class="font-bold">连接失败，请刷新后再试</span>
+                        </div>
+                        <div class="modal-footer dc_dialog_footer">
+                            <button type="button" class="btn btn-custom" data-dismiss="modal">确定</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
+
+
+    </div>
+</div>
+<!-- /content -->
+
+
+<!--<div data-ng-include=" 'view/settings.html' " class="settings panel panel-default">
+</div>--></div>
+<!-- jQuery -->
+<script src="./files/jquery.min.js"></script>
+
+
+<!--Z-Tree-->
+<script src="./files/jquery.ztree.core.js"></script>
+<script src="./files/jquery.ztree.excheck.min.js"></script>
+<!-- Angular -->
+<script src="./files/angular.js"></script>
+
+<!-- bootstrap -->
+<script src="./files/bootstrap.min.js"></script>
+<!--<script src="./files/ui-bootstrap-tpls.js"></script>-->
+
+<script src="./files/bootstrap-table.js"></script>
+<script src="./files/bsTableDirective.js"></script>
+<script src="./files/bootstrap-table-ZN.js"></script>
+<script src="./files/bootstrap-table-fixed-columns.js"></script>
+
+<!--&lt;!&ndash;日期选择器&ndash;&gt;-->
+<script src="./files/bootstrap-datetimepicker.min.js"></script>
+<script src="./files/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--&lt;!&ndash;附件上传插件&ndash;&gt;-->
+<!--<script src="./files/ng-file-upload-shim.min.js"></script>-->
+<!--<script src="./files/ng-file-upload.min.js"></script>-->
+<!-- App -->
+<script src="./files/app.js"></script>
+<script src="files/Common.js"></script>
+
+<!--下拉框-->
+<script src="./files/select2.min.js"></script>
+
+<script src="./files/moment.js"></script>
+
+
+</body>
+</html>

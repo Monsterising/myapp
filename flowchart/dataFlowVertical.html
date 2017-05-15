@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Flow Diagram</title>
+<meta name="description" content="Directed acyclic graph of nodes with varying input and output ports with labels, oriented vertically." />
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="go.js"></script>
+ <!-- this is only for the GoJS Samples framework -->
+<script id="code">
+  function init() {
+
+    var $ = go.GraphObject.make;
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",
+        {
+          initialContentAlignment: go.Spot.Top,
+          initialAutoScale: go.Diagram.UniformToFill,
+          layout: $(go.LayeredDigraphLayout,
+                    { direction: 90 }),
+          "undoManager.isEnabled": true
+        }
+      );
+
+    // when the document is modified, add a "*" to the title and enable the "Save" button
+    myDiagram.addDiagramListener("Modified", function(e) {
+      var button = document.getElementById("SaveButton");
+      if (button) button.disabled = !myDiagram.isModified;
+      var idx = document.title.indexOf("*");
+      if (myDiagram.isModified) {
+        if (idx < 0) document.title += "*";
+      } else {
+        if (idx >= 0) document.title = document.title.substr(0, idx);
+      }
+    });
+
+    // when the diagram is vertically oriented, "left" means "top" and "right" means "bottom"
+    function makePort(name, leftside) {
+      var port = $(go.Shape, "Circle",
+                   {
+                     fill: "gray", stroke: null,
+                     desiredSize: new go.Size(8, 8),
+                     portId: name,  // declare this object to be a "port"
+                     toMaxLinks: 1,  // don't allow more than one link into a port
+                     cursor: "pointer"  // show a different cursor to indicate potential link point
+                   });
+
+      var lab = $(go.TextBlock, name,  // the name of the port
+                  { font: "7pt sans-serif" });
+
+      var panel = $(go.Panel, "Vertical",
+                    { margin: new go.Margin(0, 2) });
+
+      if (leftside) {
+        port.toSpot = go.Spot.Top;
+        port.toLinkable = true;
+        lab.margin = new go.Margin(1, 0, 0, 1);
+        panel.alignment = go.Spot.TopLeft;
+        panel.add(port);
+        panel.add(lab);
+      } else {
+        port.fromSpot = go.Spot.Bottom;
+        port.fromLinkable = true;
+        lab.margin = new go.Margin(1, 1, 0, 0);
+        panel.alignment = go.Spot.TopRight;
+        panel.add(lab);
+        panel.add(port);
+      }
+      return panel;
+    }
+
+    function makeTemplate(typename, icon, background, inports, outports) {
+       var typenameStr='';
+        switch( typename){
+            case 'Start':
+                typenameStr='[进行中]';
+                break;
+            case 'End':
+                typenameStr='[已完成]';
+                break;
+            case 'UnStart':
+                typenameStr='[未开始]';
+                break;
+        }
+
+      var node = $(go.Node, "Spot",
+          $(go.Panel, "Auto",
+//            { width: 200, height: 90 },
+              { },
+            $(go.Shape, "RoundedRectangle",
+              {
+                fill: background,
+                spot1: go.Spot.TopLeft, spot2: go.Spot.BottomRight
+              }),
+            $(go.Panel, "Table",
+              $(go.TextBlock, typenameStr,  //步骤状态
+                {
+                    row:0,
+                  column: 0,
+                  margin: 3,
+                  maxSize: new go.Size(80, NaN),
+                  stroke: "white",
+                  font: "bold 10pt sans-serif"
+                }),
+              $(go.TextBlock,     //步骤名称
+                {
+                    row:0,
+                  column: 1,
+                  margin: 3,
+                  editable: true,
+                  maxSize: new go.Size(80, 40),
+                  stroke: "black",
+                  font: "bold 9pt sans-serif"
+                },
+                new go.Binding("text", "name").makeTwoWay()),
+                $(go.TextBlock, '执行人员',  //步骤人员-标题
+                    {
+                        row:1,
+                        column: 0,
+                        margin: 3,
+                        maxSize: new go.Size(80, NaN),
+                        stroke: "white",
+                        font: "bold 10pt sans-serif"
+                    }),
+                $(go.TextBlock,     //步骤人员
+                    {
+                        row: 1,
+                        column: 1,
+                        margin: 3,
+                        editable: true,
+                        maxSize: new go.Size(80, 40),
+                        stroke: "black",
+                        font: "bold 9pt sans-serif"
+                    },
+                    new go.Binding("text", "stepPerson").makeTwoWay()),
+                $(go.TextBlock, '开始时间',  //步骤开始时间-标题
+                    {
+                        row:2,
+                        column: 0,
+                        margin: 3,
+                        maxSize: new go.Size(80, NaN),
+                        stroke: "white",
+                        font: "bold 10pt sans-serif"
+                    }),
+                $(go.TextBlock,     //步骤开始时间
+                    {
+                        row: 2,
+                        column: 1,
+                        margin: 3,
+                        editable: true,
+                        maxSize: new go.Size(80, 40),
+                        stroke: "black",
+                        font: "bold 9pt sans-serif"
+                    },
+                    new go.Binding("text", "startTime").makeTwoWay()),
+                $(go.TextBlock, '完成时间',  //步骤结束时间-标题
+                    {
+                        row:3,
+                        column: 0,
+                        margin: 3,
+                        maxSize: new go.Size(80, NaN),
+                        stroke: "white",
+                        font: "bold 10pt sans-serif"
+                    }),
+                $(go.TextBlock,     //步骤结束时间
+                    {
+                        row: 3,
+                        column: 1,
+                        margin: 3,
+                        editable: true,
+                        maxSize: new go.Size(80, 40),
+                        stroke: "black",
+                        font: "bold 9pt sans-serif"
+                    },
+                    new go.Binding("text", "endTime").makeTwoWay())
+            )
+          )
+        );
+      myDiagram.nodeTemplateMap.add(typename, node);
+    }
+
+
+
+    makeTemplate("Start", "", "blue",
+                 [],
+                 []);
+
+      makeTemplate("End", "", "green",
+          [],
+          []);
+
+      makeTemplate("UnStart", "", "gray",
+          [],
+          []);
+
+    myDiagram.linkTemplate =
+      $(go.Link,
+        {
+          routing: go.Link.Orthogonal, corner: 5,
+          relinkableFrom: true, relinkableTo: true
+        },
+        $(go.Shape, { stroke: "gray", strokeWidth: 2 }),
+        $(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" })
+      );
+
+    load();
+  }
+
+  // Show the diagram's model in JSON format that the user may edit
+  function save() {
+    document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+    myDiagram.isModified = false;
+  }
+  function load() {
+    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+  }
+</script>
+</head>
+<body onload="init()">
+<div id="sample">
+  <div id="myDiagramDiv" style="border: solid 1px black; width: 100%; height: 600px"></div>
+  <p>
+    This sample demonstrates labeled ports on nodes. These ports are set up as panels, created within
+    the <b>makePort</b> function. This function sets various properties of the <a>Shape</a> and
+    <a>TextBlock</a> that make up the panel, and properties of the panel itself. Most notable are
+    <a>GraphObject.portId</a> to declare the shape as a port, and <a>GraphObject.fromLinkable</a> and
+    <a>GraphObject.toLinkable</a> to set the way the ports can be linked.
+  </p>
+  <p>
+    The diagram also uses the <b>makeTemplate</b> function to create the node templates with shared features.
+    This function takes a type, an image, a background color, and arrays of ports to create the node
+    to be added to the <a>Diagram.nodeTemplateMap</a>.
+  </p>
+  <p>
+    For the same data model rendered somewhat differently, see the <a href="dataFlow.html">Data Flow (horizontal)</a> sample.
+  </p>
+  <div>
+    <div>
+      <button id="SaveButton" onclick="save()">Save</button>
+      <button onclick="load()">Load</button>
+      Diagram Model saved in JSON format:
+    </div>
+    <textarea id="mySavedModel" style="width:100%;height:300px">
+{ "class": "go.GraphLinksModel",
+  "nodeCategoryProperty": "type",
+  "linkFromPortIdProperty": "frompid",
+  "linkToPortIdProperty": "topid",
+  "nodeDataArray": [
+{"key":1, "type":"End", "name":"巡查前准备","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":2, "type":"End", "name":"坝顶巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":3, "type":"End", "name":"坝肩巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":4, "type":"End", "name":"一级马道巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":5, "type":"End", "name":"二级马道巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":6, "type":"End", "name":"三级马道巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":7, "type":"End", "name":"四级马道巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":"12-12 09:11"},
+{"key":8, "type":"Start", "name":"5级马道巡查","stepPerson":"王伟","startTime":"12-12 09:01","endTime":""},
+{"key":9, "type":"UnStart", "name":"6级马道巡查","stepPerson":"","startTime":"","endTime":""}
+  ],
+  "linkDataArray": [
+{"from":1, "to":2},
+{"from":2,  "to":3},
+{"from":3, "to":4},
+{"from":3,  "to":5},
+{"from":4, "to":6},
+{"from":6, "to":7},
+{"from":7,  "to":8},
+{"from":5,  "to":8},
+{"from":8,  "to":9}
+
+  ]}
+    </textarea>
+  </div>
+</div>
+</body>
+</html>
